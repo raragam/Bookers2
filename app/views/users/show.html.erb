@@ -1,5 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
 
-<h1>User info</h1>
+  <body>
+
+    <h1>User info</h1>
  <%= image_tag @user.get_profile_image %>
 
  <table>
@@ -15,6 +22,8 @@
     </tr>
    </tbody>
  </table>
+
+ <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
 
 <h1>New book</h1>
   <%= form_with model: @book_new do |f| %>
@@ -59,3 +68,7 @@
       <% end %>
 
       </table>
+
+  </body>
+
+</html>
