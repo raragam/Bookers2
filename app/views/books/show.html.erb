@@ -23,7 +23,13 @@
    </tbody>
  </table>
 
- <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+   <div>
+   <% if @user == current_user %>
+   <%= link_to "プロフィール編集", edit_user_path(@user) %>
+   <% else %>
+   <%= link_to "プロフィール編集(本人ではないからブロック)", user_path(@user) %>
+   <% end %>
+   </div>
 
 <h1>New book</h1>
   <%= form_with model: @book_new do |f| %>
@@ -31,7 +37,10 @@
       <%= f.text_field :title %>
     <h4>Opinion</h4>
       <%= f.text_area :body %>
-    <%= f.submit 'Create Book' %>
+    <div>
+      <%= f.submit 'Create Book' %>
+    </div>
+
   <% end %>
 
 <h1>Book detail</h1>
@@ -41,20 +50,34 @@
         <tbody>
         <tr>
       <td>
-        <%= image_tag @user.get_profile_image %>
+        <%= link_to user_path(@user.id) do %>
+        <div>
+          <%= image_tag @user.get_profile_image %>
+        </div>
+        <div>
+          <%= @user.name %>
+        </div>
+        <% end %>
+
       </td>
       <td>
+        <%= link_to book_path(@book.id) do %>
         <span><%= @book.title %></span>
+        <% end %>
       </td>
       <td>
         <span><%= @book.body %></span>
       </td>
+
+      　<% if @user == current_user %>
       <td>
         <%= link_to "Edit", edit_book_path(@books.ids) %>
       </td>
       <td>
         <%= link_to "Destroy", book_path(@books.ids), method: :delete, "data-confirm" => "本当に消しますか？" %>
       </td>
+      <% else %>
+      <% end %>
         </tr>
       </tbody>
 

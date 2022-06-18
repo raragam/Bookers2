@@ -2,21 +2,24 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <script src="https://kit.fontawesome.com/023814cd38.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <h1>welcome to Bookers !!</h1>
-    <p>In Bookers,</p>
+    <p>In<strong>Bookers</strong>,</p>
     <p>you can share and exchange your opinions , inpressions , and emotions</p>
     <p>about various books!</p>
 
+    <div>
       <div>
         <%= link_to "Log in", new_user_session_path %>
       </div>
       <div>
         <%= link_to "Sign up", new_user_registration_path %>
       </div>
+    </div>
 
   </body>
 
