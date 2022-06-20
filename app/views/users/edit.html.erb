@@ -1,34 +1,63 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-  </head>
 
-  <body>
 
-    <h1>User info</h1>
+      <div class="container">
+
+      <div class="row">
+
+        <diV class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+          <h2>User info</h2>
+
+          <% if @user.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= @user.errors.count %> errors prohibited this obj from being saved:</h2>
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+        </ul>
+        </div>
+        <% end %>
+
     <%= form_with model: @user, url: user_path(@user.id), method: :patch do |f| %>
 
-    <label>Name</label>
-    <div>
-      <%= f.text_field :name, autofocus: true, id:"name" %>
+    <div class="form-group">
+      <div>
+        <label for="user_name">Name</label>
+      </div>
+      <div>
+      <%= f.text_field :name, autofocus: true, id:"name", class: 'form-control name' %>
+    </div>
     </div>
 
-    <label>Image</label>
+    <div class="form-group">
     <div>
-      <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+      <label for="user_image">Image</label>
+    </div>
+    <div>
+      <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class: 'form-control-file user_image' %>
+    </div>
     </div>
 
-    <label>Introduction</label>
-    <div>
-      <%= f.text_field :introduction, autofocus: true, id:"introduction" %>
+    <div class="form-group">
+      <div>
+        <label for="user_introduction">Introduction</label>
+      </div>
+      <div>
+        <%= f.text_area :introduction, autofocus: true, id:"introduction", class: 'form-control introduction' %>
+      </div>
     </div>
 
-    <div>
-      <%= f.submit "Update User" %>
-    </div>
+    <div class="form-group">
+
+    <%= f.submit 'Update User', class: 'btn btn-secondary' %>
+
+  </div>
 
     <% end %>
-  </body>
 
-  </html>
+      </diV>
+
+      </div>
+
+      </div>

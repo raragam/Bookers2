@@ -1,34 +1,48 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-  </head>
 
-  <body>
-  <h1>Editing Book</h1>
+
+      <div class="container">
+
+      <div class="row">
+
+        <diV class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+        <% if @book.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= @book.errors.count %> errors prohibited this book from being saved:</h2>
+        <ul>
+        <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+        </ul>
+        </div>
+        <% end %>
+
+          <h1>Editing Book</h1>
 
   <%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
 
-    <div class="field">
+    <div class="form-group">
       <div>
         <label>Title</label>
       </div>
       <div>
-        <%= f.text_field :title %>
+        <%= f.text_field :title, class: 'form-control book_title' %>
      </div>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <div>
         <label>Body</label>
       </div>
       <div>
-        <%= f.text_area :body %>
+        <%= f.text_area :body, class: 'form-control book_body' %>
      </div>
     </div>
 
-  <div class="actions">
-   <%= f.submit 'Update Book' %>
+  <div class="form-group">
+
+    <%= f.submit 'Update User', class: 'btn btn-success' %>
+
   </div>
 
   <% end %>
@@ -36,7 +50,8 @@
   <%= link_to "Show", book_path(@book.id) %>
    |
   <a class="back" href=/books>Back</a>
-</body>
 
 
-</html>
+        </diV>
+
+      </div>
