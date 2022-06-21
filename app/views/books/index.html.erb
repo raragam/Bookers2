@@ -21,7 +21,7 @@
     </div>
 <% end %>
 
-    <div class-"row">
+    <div class="row">
       <div class="col-md-3">
 
     <h2>User info</h2>
@@ -45,7 +45,7 @@
 <div class="row">
 
        <%= link_to edit_user_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
-       <i class="fa-solid fa-user-gear"></i>
+       <i class="fas fa-user-cog"></i>
 
      <% end %>
    </div>
@@ -111,9 +111,6 @@
       </td>
       <td>
         <%= book.body %>
-      </td>
-      <td>
-        <%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "本当に消しますか？" %>
       </td>
         </tr>
       </tbody>
