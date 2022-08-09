@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  resources :reviews
   root to: "homes#top"
 
   get 'home/about' => "homes#about", as: "about"
